@@ -8,7 +8,7 @@ public interface IDefenceServiceAsync
 {
 	void saveDefences(FunctionalityManager fm, AsyncCallback<Void> callback);
 
-	void getHardDefences(FunctionalityManager fm, AsyncCallback<FunctionalityManager> callback);
+	void getHardDefences(FunctionalityManager fm, AsyncCallback<Void> callback);
 
 	void getNetDefences(FunctionalityManager fm, AsyncCallback<FunctionalityManager> callback);
 

@@ -1,6 +1,5 @@
 package org.elsys.salvation.client;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -14,8 +13,6 @@ import org.elsys.salvation.listeners.GridTableAddMoreButtonListener;
 import org.elsys.salvation.listeners.GridTableBackButtonListener;
 import org.elsys.salvation.listeners.NewDataButtonListener;
 import org.elsys.salvation.listeners.SubmitInformationButtonListener;
-import org.elsys.salvation.server.Defences;
-import org.elsys.salvation.server.ObjectSerializationToMysql;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -65,11 +62,7 @@ public class Salvation implements EntryPoint
 
 	private static final String TYPES_LISTBOX_SOFTWARE_TYPE_TITLE_LABEL = "Software Type";
 
-	private static final String SPECIALTIES_LISTBOX_COMMUNICATIONS_LABEL = "Communications";
-
 	private static final String SPECIALTIES_LISTBOX_SOFTWARE_LABEL = "Software";
-
-	private static final String SPECIALTIES_LISTBOX_HARDWARE_LABEL = "Hardware";
 
 	private static final String DIPLOMANTS_NAME_TEXTBOX_LABEL = "Diplomants name/s";
 
@@ -99,7 +92,18 @@ public class Salvation implements EntryPoint
 		Button newData = new Button(NEW_DATA_BUTTON_LABEL);
 		newData.addStyleName("newDataButton");
 		newData.setWidth(100);
-		// final Button existingData = new Button("Existing");
+
+		Button existingData = new Button("Load data");
+		existingData.setWidth(100);
+		existingData.addClickHandler(new ClickHandler()
+		{
+			public void onClick(ClickEvent event)
+			{
+				RootPanel.get("mainDiv").clear();
+				// editDiploma();
+			}
+		});
+
 		HorizontalPanel mainHorizontalPanel = new HorizontalPanel();
 
 		Label lastUpdatedLabel = new Label();
@@ -107,18 +111,11 @@ public class Salvation implements EntryPoint
 		mainHorizontalPanel.add(newData);
 		mainHorizontalPanel.setCellHorizontalAlignment(newData, HasHorizontalAlignment.ALIGN_CENTER);
 
-		// mainHorizontalPanel.add(existingData);
+		mainHorizontalPanel.add(existingData);
 		mainHorizontalPanel.add(lastUpdatedLabel);
 
 		RootPanel.get("mainDiv").add(mainHorizontalPanel);
 		newData.addClickHandler(new NewDataButtonListener());
-
-		// existingData.addClickHandler(new ClickHandler() {
-		// public void onClick(ClickEvent event) {
-		// RootPanel.get("mainDiv").clear();
-		// editDiploma();
-		// }
-		// });
 	}
 
 	protected void dateRange()

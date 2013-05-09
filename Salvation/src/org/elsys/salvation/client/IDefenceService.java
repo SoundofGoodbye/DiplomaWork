@@ -10,7 +10,7 @@ public interface IDefenceService extends RemoteService
 {
 	void saveDefences(FunctionalityManager fm);
 
-	FunctionalityManager getHardDefences(FunctionalityManager fm);
+	void getHardDefences(FunctionalityManager fm);
 
 	FunctionalityManager getNetDefences(FunctionalityManager fm);
 
